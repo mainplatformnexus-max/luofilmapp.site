@@ -1,0 +1,96 @@
+https://blog.chromium.org/2019/10/no-more-mixed-messages-about-https.htmlUnderstand this warning
+chunk-R6S4VRB5.js?v=23d336d1:521 Warning: React has detected a change in the order of Hooks called by Watch. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useContext                 useContext
+6. useContext                 useContext
+7. useContext                 useContext
+8. useContext                 useContext
+9. useRef                     useRef
+10. useContext                useContext
+11. useLayoutEffect           useLayoutEffect
+12. useCallback               useCallback
+13. useContext                useContext
+14. useContext                useContext
+15. useContext                useContext
+16. useState                  useState
+17. useEffect                 useEffect
+18. useState                  useState
+19. useState                  useState
+20. useState                  useState
+21. useState                  useState
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useState                  useState
+26. useState                  useState
+27. useState                  useState
+28. useState                  useState
+29. useState                  useState
+30. useState                  useState
+31. useState                  useState
+32. useEffect                 useEffect
+33. useEffect                 useEffect
+34. useEffect                 useEffect
+35. useEffect                 useEffect
+36. useEffect                 useEffect
+37. useEffect                 useEffect
+38. undefined                 useEffect
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    at Watch (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/src/pages/Watch.tsx:361:20)
+    at RenderedRoute (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=23d336d1:4088:5)
+    at Routes (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=23d336d1:4558:5)
+    at AppLayout (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/src/App.tsx:49:22)
+    at Router (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=23d336d1:4501:15)
+    at BrowserRouter (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=23d336d1:5247:5)
+    at AuthProvider (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/src/contexts/AuthContext.tsx:34:32)
+    at Provider (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/chunk-GQFEUIQY.js?v=23d336d1:39:15)
+    at TooltipProvider (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=23d336d1:2266:5)
+    at QueryClientProvider (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=23d336d1:2934:3)
+    at App
+printWarning @ chunk-R6S4VRB5.js?v=23d336d1:521Understand this error
+2chunk-R6S4VRB5.js?v=23d336d1:11678 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-R6S4VRB5.js?v=23d336d1:11678:21)
+    at updateEffectImpl (chunk-R6S4VRB5.js?v=23d336d1:12074:22)
+    at updateEffect (chunk-R6S4VRB5.js?v=23d336d1:12099:18)
+    at Object.useEffect (chunk-R6S4VRB5.js?v=23d336d1:12703:22)
+    at useEffect (chunk-3TFVT2CW.js?v=23d336d1:1078:29)
+    at Watch (Watch.tsx:402:3)
+    at renderWithHooks (chunk-R6S4VRB5.js?v=23d336d1:11548:26)
+    at updateFunctionComponent (chunk-R6S4VRB5.js?v=23d336d1:14582:28)
+    at beginWork (chunk-R6S4VRB5.js?v=23d336d1:15924:22)
+    at HTMLUnknownElement.callCallback2 (chunk-R6S4VRB5.js?v=23d336d1:3674:22)Understand this error
+chunk-R6S4VRB5.js?v=23d336d1:14032 The above error occurred in the <Watch> component:
+
+    at Watch (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/src/pages/Watch.tsx:361:20)
+    at RenderedRoute (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=23d336d1:4088:5)
+    at Routes (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=23d336d1:4558:5)
+    at AppLayout (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/src/App.tsx:49:22)
+    at Router (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=23d336d1:4501:15)
+    at BrowserRouter (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=23d336d1:5247:5)
+    at AuthProvider (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/src/contexts/AuthContext.tsx:34:32)
+    at Provider (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/chunk-GQFEUIQY.js?v=23d336d1:39:15)
+    at TooltipProvider (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=23d336d1:2266:5)
+    at QueryClientProvider (https://671d00a2-e008-4853-9741-c70750696cb4-00-zalo4sy1gjd7.riker.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=23d336d1:2934:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+logCapturedError @ chunk-R6S4VRB5.js?v=23d336d1:14032Understand this error
+chunk-R6S4VRB5.js?v=23d336d1:19413 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-R6S4VRB5.js?v=23d336d1:11678:21)
+    at updateEffectImpl (chunk-R6S4VRB5.js?v=23d336d1:12074:22)
+    at updateEffect (chunk-R6S4VRB5.js?v=23d336d1:12099:18)
+    at Object.useEffect (chunk-R6S4VRB5.js?v=23d336d1:12703:22)
+    at useEffect (chunk-3TFVT2CW.js?v=23d336d1:1078:29)
+    at Watch (Watch.tsx:402:3)
+    at renderWithHooks (chunk-R6S4VRB5.js?v=23d336d1:11548:26)
+    at updateFunctionComponent (chunk-R6S4VRB5.js?v=23d336d1:14582:28)
+    at beginWork (chunk-R6S4VRB5.js?v=23d336d1:15924:22)
+    at beginWork$1 (chunk-R6S4VRB5.js?v=23d336d1:19753:22)Understand this error

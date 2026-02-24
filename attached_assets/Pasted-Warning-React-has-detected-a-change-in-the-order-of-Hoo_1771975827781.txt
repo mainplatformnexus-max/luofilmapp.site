@@ -1,0 +1,196 @@
+Warning: React has detected a change in the order of Hooks called by Watch. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useContext                 useContext
+6. useContext                 useContext
+7. useContext                 useContext
+8. useContext                 useContext
+9. useRef                     useRef
+10. useContext                useContext
+11. useLayoutEffect           useLayoutEffect
+12. useCallback               useCallback
+13. useContext                useContext
+14. useContext                useContext
+15. useContext                useContext
+16. useState                  useState
+17. useEffect                 useEffect
+18. useState                  useState
+19. useState                  useState
+20. useState                  useState
+21. useState                  useState
+22. useState                  useState
+23. useState                  useState
+24. useState                  useState
+25. useState                  useState
+26. useState                  useState
+27. useState                  useState
+28. useState                  useState
+29. useState                  useState
+30. useState                  useState
+31. useState                  useState
+32. useEffect                 useEffect
+33. useEffect                 useEffect
+34. useEffect                 useEffect
+35. useEffect                 useEffect
+36. useEffect                 useEffect
+37. useEffect                 useEffect
+38. undefined                 useEffect
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    at Watch (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/src/pages/Watch.tsx:349:20)
+    at RenderedRoute (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=7309f487:4088:5)
+    at Routes (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=7309f487:4558:5)
+    at AppLayout (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/src/App.tsx:49:22)
+    at Router (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=7309f487:4501:15)
+    at BrowserRouter (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=7309f487:5247:5)
+    at AuthProvider (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/src/contexts/AuthContext.tsx:34:32)
+    at Provider (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/chunk-U5PUTILZ.js?v=7309f487:39:15)
+    at TooltipProvider (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=7309f487:2266:5)
+    at QueryClientProvider (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=7309f487:2934:3)
+    at App
+printWarning @ chunk-BQ6CIJM2.js?v=7309f487:521
+error @ chunk-BQ6CIJM2.js?v=7309f487:505
+warnOnHookMismatchInDev @ chunk-BQ6CIJM2.js?v=7309f487:11495
+updateHookTypesDev @ chunk-BQ6CIJM2.js?v=7309f487:11465
+useEffect @ chunk-BQ6CIJM2.js?v=7309f487:12702
+useEffect @ chunk-HHJ3BP6J.js?v=7309f487:1078
+Watch @ Watch.tsx:395
+renderWithHooks @ chunk-BQ6CIJM2.js?v=7309f487:11548
+updateFunctionComponent @ chunk-BQ6CIJM2.js?v=7309f487:14582
+beginWork @ chunk-BQ6CIJM2.js?v=7309f487:15924
+beginWork$1 @ chunk-BQ6CIJM2.js?v=7309f487:19753
+performUnitOfWork @ chunk-BQ6CIJM2.js?v=7309f487:19198
+workLoopSync @ chunk-BQ6CIJM2.js?v=7309f487:19137
+renderRootSync @ chunk-BQ6CIJM2.js?v=7309f487:19116
+performConcurrentWorkOnRoot @ chunk-BQ6CIJM2.js?v=7309f487:18678
+workLoop @ chunk-BQ6CIJM2.js?v=7309f487:197
+flushWork @ chunk-BQ6CIJM2.js?v=7309f487:176
+performWorkUntilDeadline @ chunk-BQ6CIJM2.js?v=7309f487:384Understand this error
+chunk-BQ6CIJM2.js?v=7309f487:11678 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-BQ6CIJM2.js?v=7309f487:11678:21)
+    at updateEffectImpl (chunk-BQ6CIJM2.js?v=7309f487:12074:22)
+    at updateEffect (chunk-BQ6CIJM2.js?v=7309f487:12099:18)
+    at Object.useEffect (chunk-BQ6CIJM2.js?v=7309f487:12703:22)
+    at useEffect (chunk-HHJ3BP6J.js?v=7309f487:1078:29)
+    at Watch (Watch.tsx:395:3)
+    at renderWithHooks (chunk-BQ6CIJM2.js?v=7309f487:11548:26)
+    at updateFunctionComponent (chunk-BQ6CIJM2.js?v=7309f487:14582:28)
+    at beginWork (chunk-BQ6CIJM2.js?v=7309f487:15924:22)
+    at HTMLUnknownElement.callCallback2 (chunk-BQ6CIJM2.js?v=7309f487:3674:22)
+updateWorkInProgressHook @ chunk-BQ6CIJM2.js?v=7309f487:11678
+updateEffectImpl @ chunk-BQ6CIJM2.js?v=7309f487:12074
+updateEffect @ chunk-BQ6CIJM2.js?v=7309f487:12099
+useEffect @ chunk-BQ6CIJM2.js?v=7309f487:12703
+useEffect @ chunk-HHJ3BP6J.js?v=7309f487:1078
+Watch @ Watch.tsx:395
+renderWithHooks @ chunk-BQ6CIJM2.js?v=7309f487:11548
+updateFunctionComponent @ chunk-BQ6CIJM2.js?v=7309f487:14582
+beginWork @ chunk-BQ6CIJM2.js?v=7309f487:15924
+callCallback2 @ chunk-BQ6CIJM2.js?v=7309f487:3674
+invokeGuardedCallbackDev @ chunk-BQ6CIJM2.js?v=7309f487:3699
+invokeGuardedCallback @ chunk-BQ6CIJM2.js?v=7309f487:3733
+beginWork$1 @ chunk-BQ6CIJM2.js?v=7309f487:19765
+performUnitOfWork @ chunk-BQ6CIJM2.js?v=7309f487:19198
+workLoopSync @ chunk-BQ6CIJM2.js?v=7309f487:19137
+renderRootSync @ chunk-BQ6CIJM2.js?v=7309f487:19116
+performConcurrentWorkOnRoot @ chunk-BQ6CIJM2.js?v=7309f487:18678
+workLoop @ chunk-BQ6CIJM2.js?v=7309f487:197
+flushWork @ chunk-BQ6CIJM2.js?v=7309f487:176
+performWorkUntilDeadline @ chunk-BQ6CIJM2.js?v=7309f487:384Understand this error
+chunk-BQ6CIJM2.js?v=7309f487:11678 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-BQ6CIJM2.js?v=7309f487:11678:21)
+    at updateEffectImpl (chunk-BQ6CIJM2.js?v=7309f487:12074:22)
+    at updateEffect (chunk-BQ6CIJM2.js?v=7309f487:12099:18)
+    at Object.useEffect (chunk-BQ6CIJM2.js?v=7309f487:12703:22)
+    at useEffect (chunk-HHJ3BP6J.js?v=7309f487:1078:29)
+    at Watch (Watch.tsx:395:3)
+    at renderWithHooks (chunk-BQ6CIJM2.js?v=7309f487:11548:26)
+    at updateFunctionComponent (chunk-BQ6CIJM2.js?v=7309f487:14582:28)
+    at beginWork (chunk-BQ6CIJM2.js?v=7309f487:15924:22)
+    at HTMLUnknownElement.callCallback2 (chunk-BQ6CIJM2.js?v=7309f487:3674:22)
+updateWorkInProgressHook @ chunk-BQ6CIJM2.js?v=7309f487:11678
+updateEffectImpl @ chunk-BQ6CIJM2.js?v=7309f487:12074
+updateEffect @ chunk-BQ6CIJM2.js?v=7309f487:12099
+useEffect @ chunk-BQ6CIJM2.js?v=7309f487:12703
+useEffect @ chunk-HHJ3BP6J.js?v=7309f487:1078
+Watch @ Watch.tsx:395
+renderWithHooks @ chunk-BQ6CIJM2.js?v=7309f487:11548
+updateFunctionComponent @ chunk-BQ6CIJM2.js?v=7309f487:14582
+beginWork @ chunk-BQ6CIJM2.js?v=7309f487:15924
+callCallback2 @ chunk-BQ6CIJM2.js?v=7309f487:3674
+invokeGuardedCallbackDev @ chunk-BQ6CIJM2.js?v=7309f487:3699
+invokeGuardedCallback @ chunk-BQ6CIJM2.js?v=7309f487:3733
+beginWork$1 @ chunk-BQ6CIJM2.js?v=7309f487:19765
+performUnitOfWork @ chunk-BQ6CIJM2.js?v=7309f487:19198
+workLoopSync @ chunk-BQ6CIJM2.js?v=7309f487:19137
+renderRootSync @ chunk-BQ6CIJM2.js?v=7309f487:19116
+recoverFromConcurrentError @ chunk-BQ6CIJM2.js?v=7309f487:18736
+performConcurrentWorkOnRoot @ chunk-BQ6CIJM2.js?v=7309f487:18684
+workLoop @ chunk-BQ6CIJM2.js?v=7309f487:197
+flushWork @ chunk-BQ6CIJM2.js?v=7309f487:176
+performWorkUntilDeadline @ chunk-BQ6CIJM2.js?v=7309f487:384Understand this error
+chunk-BQ6CIJM2.js?v=7309f487:14032 The above error occurred in the <Watch> component:
+
+    at Watch (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/src/pages/Watch.tsx:349:20)
+    at RenderedRoute (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=7309f487:4088:5)
+    at Routes (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=7309f487:4558:5)
+    at AppLayout (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/src/App.tsx:49:22)
+    at Router (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=7309f487:4501:15)
+    at BrowserRouter (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=7309f487:5247:5)
+    at AuthProvider (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/src/contexts/AuthContext.tsx:34:32)
+    at Provider (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/chunk-U5PUTILZ.js?v=7309f487:39:15)
+    at TooltipProvider (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=7309f487:2266:5)
+    at QueryClientProvider (https://ef822654-7964-43f8-a512-93502b23404a-00-10mqmnwkbqxer.riker.replit.dev/node_modules/.vite/deps/@tanstack_react-query.js?v=7309f487:2934:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+logCapturedError @ chunk-BQ6CIJM2.js?v=7309f487:14032
+update.callback @ chunk-BQ6CIJM2.js?v=7309f487:14052
+callCallback @ chunk-BQ6CIJM2.js?v=7309f487:11248
+commitUpdateQueue @ chunk-BQ6CIJM2.js?v=7309f487:11265
+commitLayoutEffectOnFiber @ chunk-BQ6CIJM2.js?v=7309f487:17093
+commitLayoutMountEffects_complete @ chunk-BQ6CIJM2.js?v=7309f487:17980
+commitLayoutEffects_begin @ chunk-BQ6CIJM2.js?v=7309f487:17969
+commitLayoutEffects @ chunk-BQ6CIJM2.js?v=7309f487:17920
+commitRootImpl @ chunk-BQ6CIJM2.js?v=7309f487:19353
+commitRoot @ chunk-BQ6CIJM2.js?v=7309f487:19277
+finishConcurrentRender @ chunk-BQ6CIJM2.js?v=7309f487:18760
+performConcurrentWorkOnRoot @ chunk-BQ6CIJM2.js?v=7309f487:18718
+workLoop @ chunk-BQ6CIJM2.js?v=7309f487:197
+flushWork @ chunk-BQ6CIJM2.js?v=7309f487:176
+performWorkUntilDeadline @ chunk-BQ6CIJM2.js?v=7309f487:384Understand this error
+chunk-BQ6CIJM2.js?v=7309f487:11678 Uncaught Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (chunk-BQ6CIJM2.js?v=7309f487:11678:21)
+    at updateEffectImpl (chunk-BQ6CIJM2.js?v=7309f487:12074:22)
+    at updateEffect (chunk-BQ6CIJM2.js?v=7309f487:12099:18)
+    at Object.useEffect (chunk-BQ6CIJM2.js?v=7309f487:12703:22)
+    at useEffect (chunk-HHJ3BP6J.js?v=7309f487:1078:29)
+    at Watch (Watch.tsx:395:3)
+    at renderWithHooks (chunk-BQ6CIJM2.js?v=7309f487:11548:26)
+    at updateFunctionComponent (chunk-BQ6CIJM2.js?v=7309f487:14582:28)
+    at beginWork (chunk-BQ6CIJM2.js?v=7309f487:15924:22)
+    at beginWork$1 (chunk-BQ6CIJM2.js?v=7309f487:19753:22)
+updateWorkInProgressHook @ chunk-BQ6CIJM2.js?v=7309f487:11678
+updateEffectImpl @ chunk-BQ6CIJM2.js?v=7309f487:12074
+updateEffect @ chunk-BQ6CIJM2.js?v=7309f487:12099
+useEffect @ chunk-BQ6CIJM2.js?v=7309f487:12703
+useEffect @ chunk-HHJ3BP6J.js?v=7309f487:1078
+Watch @ Watch.tsx:395
+renderWithHooks @ chunk-BQ6CIJM2.js?v=7309f487:11548
+updateFunctionComponent @ chunk-BQ6CIJM2.js?v=7309f487:14582
+beginWork @ chunk-BQ6CIJM2.js?v=7309f487:15924
+beginWork$1 @ chunk-BQ6CIJM2.js?v=7309f487:19753
+performUnitOfWork @ chunk-BQ6CIJM2.js?v=7309f487:19198
+workLoopSync @ chunk-BQ6CIJM2.js?v=7309f487:19137
+renderRootSync @ chunk-BQ6CIJM2.js?v=7309f487:19116
+recoverFromConcurrentError @ chunk-BQ6CIJM2.js?v=7309f487:18736
+performConcurrentWorkOnRoot @ chunk-BQ6CIJM2.js?v=7309f487:18684
+workLoop @ chunk-BQ6CIJM2.js?v=7309f487:197
+flushWork @ chunk-BQ6CIJM2.js?v=7309f487:176
+performWorkUntilDeadline @ chunk-BQ6CIJM2.js?v=7309f487:384Understand this error
