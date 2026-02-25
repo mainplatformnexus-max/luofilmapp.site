@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { X, Crown, Phone, CheckCircle, Smartphone, Loader2 } from "lucide-react";
+import { X, Crown, Phone, CheckCircle, Smartphone, Loader2, User } from "lucide-react";
 import { addAgent, generateAgentId, addTransaction, getUserByUid, updateUser } from "@/lib/firebaseServices";
 import { requestDeposit, pollPaymentStatus } from "@/lib/livraPayment";
 import { useToast } from "@/hooks/use-toast";
