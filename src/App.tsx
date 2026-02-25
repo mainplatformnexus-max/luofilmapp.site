@@ -21,6 +21,7 @@ import SharedContent from "./pages/SharedContent";
 import AdminDashboard from "./pages/AdminDashboard";
 import SectionPage from "./pages/SectionPage";
 import HowToUse from "./pages/HowToUse";
+import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const AppLayout = () => {
         <Route path="/section/:sectionId" element={<SectionPage />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/how-to-use" element={<HowToUse />} />
+        <Route path="/sitemap" element={<Sitemap />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {!isAudiencePage && <BottomNav />}
