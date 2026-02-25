@@ -141,34 +141,19 @@ const AgentWatch = () => {
       ? `${title} - Episode ${currentEpisode.episodeNumber}.mp4`
       : `${title}.mp4`;
     setIsDownloading(true);
-    toast({ title: "Preparing download...", description: "Fetching video file..." });
+    toast({ title: "Starting download...", description: `Opening ${fileName}...` });
     try {
-      const response = await fetch(downloadLink);
-      if (!response.ok) throw new Error("fetch_failed");
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = blobUrl;
+      a.href = downloadLink;
       a.download = fileName;
-      a.style.display = "none";
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
       document.body.appendChild(a);
       a.click();
-      setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(blobUrl); }, 5000);
-      toast({ title: "Download started!", description: fileName });
+      document.body.removeChild(a);
+      toast({ title: "Download initiated!", description: "Check your browser's download manager." });
     } catch {
-      // Fallback: direct link
-      try {
-        const a = document.createElement("a");
-        a.href = downloadLink;
-        a.download = fileName;
-        a.target = "_blank";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        toast({ title: "Download started!", description: fileName });
-      } catch {
-        toast({ title: "Download failed", description: "The video server may not support direct downloads.", variant: "destructive" });
-      }
+      toast({ title: "Download failed", description: "The video server may not support direct downloads.", variant: "destructive" });
     }
     setIsDownloading(false);
   };
