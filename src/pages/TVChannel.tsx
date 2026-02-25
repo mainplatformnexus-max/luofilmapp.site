@@ -6,6 +6,7 @@ import type { TVChannelItem, LatestUpdateItem, UserItem } from "@/data/adminData
 import shaka from "shaka-player";
 import logo from "@/assets/logo.png";
 import LogoLoader from "@/components/LogoLoader";
+import HeroBanner from "@/components/HeroBanner";
 import { Play, Pause, Volume2, VolumeX, Maximize, Minimize, Loader2 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import SubscribeModal from "@/components/SubscribeModal";
@@ -334,6 +335,7 @@ const TVChannel = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <HeroBanner page="home" compact />
       <div className="h-3" />
 
       {activeChannel && activeChannel.streamLink && (

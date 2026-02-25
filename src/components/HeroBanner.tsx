@@ -1,5 +1,6 @@
 import { Play, Plus } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { subscribeCarousels } from "@/lib/firebaseServices";
 import type { CarouselItem } from "@/data/adminData";
 import LogoLoader from "@/components/LogoLoader";
@@ -10,6 +11,7 @@ interface HeroBannerProps {
 }
 
 const HeroBanner = ({ page = "home", compact = false }: HeroBannerProps) => {
+  const navigate = useNavigate();
   const [carousels, setCarousels] = useState<CarouselItem[] | null>(null);
   const [current, setCurrent] = useState(0);
 
@@ -21,13 +23,44 @@ const HeroBanner = ({ page = "home", compact = false }: HeroBannerProps) => {
 
   const slides = carousels && carousels.length > 0
     ? carousels.map(c => ({
+        id: c.id,
         image: c.imageUrl,
         title: c.title,
         badges: [c.hotWord].filter(Boolean),
         status: c.subtitle,
         desc: c.subtitle,
+        linkType: c.linkType,
+        linkId: c.linkId,
       }))
     : [];
+
+  const handlePlay = (slide: any) => {
+    if (!slide.linkType || !slide.linkId) return;
+    
+    switch (slide.linkType) {
+      case "movie":
+        navigate(`/watch/${slide.linkId}`);
+        break;
+      case "series":
+        navigate(`/series/${slide.linkId}`);
+        break;
+      case "episode":
+        navigate(`/watch/${slide.linkId}`);
+        break;
+      case "tv-channel":
+        navigate("/tv-channels", { state: { channelId: slide.linkId } });
+        break;
+      case "live-match":
+      case "live-sport":
+        navigate(`/watch/sport-${slide.linkId}`);
+        break;
+      case "latest-update":
+        navigate("/tv-channels"); // Or appropriate updates page
+        break;
+      default:
+        console.log("Unknown link type:", slide.linkType);
+    }
+  };
 
   const next = useCallback(() => {
     if (slides.length > 0) setCurrent((c) => (c + 1) % slides.length);
@@ -49,6 +82,8 @@ const HeroBanner = ({ page = "home", compact = false }: HeroBannerProps) => {
 
   if (slides.length === 0) return null;
 
+  const currentSlide = slides[current];
+
   return (
     <div className={`relative w-full ${compact ? "h-28 md:h-36" : "aspect-[16/7] md:aspect-[16/5] lg:aspect-[16/4.5]"} overflow-hidden bg-card`}>
       {slides.map((s, i) => (
@@ -63,10 +98,17 @@ const HeroBanner = ({ page = "home", compact = false }: HeroBannerProps) => {
       {!compact && (
         <div className="absolute bottom-4 md:bottom-6 left-3 md:left-10 z-10">
           <div className="flex items-center gap-1.5">
-            <button className="flex items-center gap-1 bg-primary text-primary-foreground px-3 md:px-5 py-1.5 md:py-2 rounded-full font-semibold text-[10px] md:text-xs hover:opacity-90 transition-opacity shadow-lg">
+            <button 
+              onClick={() => handlePlay(currentSlide)}
+              className="flex items-center gap-1 bg-primary text-primary-foreground px-3 md:px-5 py-1.5 md:py-2 rounded-full font-semibold text-[10px] md:text-xs hover:opacity-90 transition-opacity shadow-lg"
+            >
               <Play className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current" /> Play
             </button>
-            <button className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-full border border-muted-foreground/40 text-foreground hover:border-foreground transition-colors bg-card/30 backdrop-blur-sm">
+            <button 
+              onClick={() => console.log("Added to Watch Later:", currentSlide.title)}
+              className="flex items-center justify-center w-6 h-6 md:w-8 md:h-8 rounded-full border border-muted-foreground/40 text-foreground hover:border-foreground transition-colors bg-card/30 backdrop-blur-sm"
+              title="Add to Watch Later"
+            >
               <Plus className="w-3 h-3 md:w-4 md:h-4" />
             </button>
           </div>
