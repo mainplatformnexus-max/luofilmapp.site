@@ -46,6 +46,34 @@ const SubscribeModal = ({ open, onClose, mode = "user" }: SubscribeModalProps) =
 
   if (!open) return null;
 
+  if (!user && open) {
+    return (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+        <div className="relative w-full max-w-sm mx-4 bg-card border border-border rounded-2xl shadow-2xl overflow-hidden p-8 text-center animate-in zoom-in-95 fade-in duration-200">
+          <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-4">
+            <User className="w-6 h-6 text-accent-foreground" />
+          </div>
+          <h2 className="text-foreground font-bold text-lg mb-2">Login Required</h2>
+          <p className="text-muted-foreground text-sm mb-6">
+            Please log in to your account before subscribing so we can link the plan to your profile.
+          </p>
+          <button
+            onClick={() => {
+              onClose();
+              const loginBtn = document.querySelector('button[onclick*="setShowLogin(true)"]') as HTMLButtonElement;
+              if (loginBtn) loginBtn.click();
+              else window.dispatchEvent(new CustomEvent('open-login-modal'));
+            }}
+            className="w-full h-10 bg-primary text-primary-foreground font-semibold text-sm rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Go to Login
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   const plans = mode === "agent" ? agentPlans : userPlans;
   const title = mode === "agent" ? "Agent 1X Plan" : "Subscribe";
   const subtitle = mode === "agent"

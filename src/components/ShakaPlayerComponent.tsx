@@ -25,6 +25,22 @@ const ShakaPlayerComponent = ({ src, autoplay = true, className }: ShakaPlayerCo
     const player = new shaka.Player();
     playerRef.current = player;
 
+    player.configure({
+      streaming: {
+        bufferingGoal: 30,
+        rebufferingGoal: 2,
+        bufferBehind: 30,
+        lowLatencyMode: true,
+      },
+      manifest: {
+        retryParameters: {
+          maxAttempts: 5,
+          baseDelay: 500,
+          backoffFactor: 2,
+        }
+      }
+    });
+
     player.attach(video).then(() => {
       return player.load(src);
     }).then(() => {

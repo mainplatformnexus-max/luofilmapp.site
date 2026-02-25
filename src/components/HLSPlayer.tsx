@@ -19,7 +19,14 @@ const HLSPlayer = ({ src, poster }: HLSPlayerProps) => {
         video.src = src;
         video.play().catch(() => {});
       } else if (Hls.isSupported()) {
-        const hls = new Hls();
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          backBufferLength: 60,
+          maxBufferLength: 30,
+          maxMaxBufferLength: 60,
+          maxBufferSize: 60 * 1024 * 1024,
+        });
         hls.loadSource(src);
         hls.attachMedia(video);
         hls.on(Hls.Events.MEDIA_ATTACHED, () => {

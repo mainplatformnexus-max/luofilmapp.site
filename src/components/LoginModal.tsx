@@ -23,6 +23,23 @@ const LoginModal = ({ open, onClose }: LoginModalProps) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const handleOpenLogin = () => {
+      if (!open) {
+        // Find and click the login button in the header
+        const loginButtons = document.querySelectorAll('button');
+        for (const btn of Array.from(loginButtons)) {
+          if (btn.textContent?.toLowerCase().includes('login')) {
+            (btn as HTMLButtonElement).click();
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener('open-login-modal', handleOpenLogin);
+    return () => window.removeEventListener('open-login-modal', handleOpenLogin);
+  }, [open]);
+
   if (!open) return null;
 
   const resetForm = () => {

@@ -42,7 +42,21 @@ const ArtPlayerComponent = ({ src, poster, autoplay = false, className }: ArtPla
         ? {
             customType: {
               m3u8: (video: HTMLVideoElement, url: string) => {
-                const hls = new Hls({ enableWorker: true, lowLatencyMode: true });
+                const hls = new Hls({ 
+                  enableWorker: true, 
+                  lowLatencyMode: true,
+                  backBufferLength: 60,
+                  maxBufferLength: 30,
+                  maxMaxBufferLength: 60,
+                  maxBufferSize: 60 * 1024 * 1024,
+                  nudgeOffset: 0.1,
+                  nudgeMaxRetries: 10,
+                  liveSyncDurationCount: 3,
+                  liveMaxLatencyDurationCount: 10,
+                  startLevel: -1,
+                  abrEwmaDefaultEstimate: 500000,
+                  testBandwidth: true
+                });
                 hls.loadSource(url);
                 hls.attachMedia(video);
                 art.on("destroy", () => hls.destroy());
