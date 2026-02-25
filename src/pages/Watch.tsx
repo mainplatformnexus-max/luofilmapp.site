@@ -483,7 +483,8 @@ const Watch = () => {
 
   // Require subscription to play & download (Admins bypass)
   const isAdmin = userDoc?.role === "admin";
-  const requiresSubscription = !user || (!hasSubscription && !isAdmin);
+  const hasValidSubscription = isAdmin || hasSubscription;
+  const requiresSubscription = !user || !hasValidSubscription;
 
   return (
     <div className="min-h-screen bg-background">

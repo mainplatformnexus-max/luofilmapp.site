@@ -31,7 +31,14 @@ const SubscribeModal = ({ open, onClose, mode = "user" }: SubscribeModalProps) =
   const [statusMessage, setStatusMessage] = useState("Sending payment prompt to your phone...");
   const { toast } = useToast();
   const { user } = useAuth();
+  const [userDoc, setUserDoc] = useState<any>(null);
   const cancelPollRef = useRef<(() => void) | null>(null);
+
+  useEffect(() => {
+    if (user) {
+      getUserByUid(user.uid).then(doc => setUserDoc(doc));
+    }
+  }, [user]);
 
   useEffect(() => {
     return () => { cancelPollRef.current?.(); };
@@ -121,11 +128,23 @@ const SubscribeModal = ({ open, onClose, mode = "user" }: SubscribeModalProps) =
               if (user) {
                 const userDoc = await getUserByUid(user.uid);
                 if (userDoc) {
-                  const { updateUser } = await import("@/lib/firebaseServices");
                   await updateUser(userDoc.id, {
                     subscription: planInfo.label,
                     subscriptionExpiry: expiry.toISOString().split("T")[0],
                     status: "active",
+                  });
+                } else {
+                  // If user document doesn't exist, create it
+                  await addUser({
+                    uid: user.uid,
+                    email: user.email || "",
+                    displayName: user.displayName || phoneNumber,
+                    phone: phoneNumber,
+                    subscription: planInfo.label,
+                    subscriptionExpiry: expiry.toISOString().split("T")[0],
+                    status: "active",
+                    role: "user",
+                    createdAt: new Date().toISOString().split("T")[0],
                   });
                 }
               }
@@ -184,8 +203,16 @@ const SubscribeModal = ({ open, onClose, mode = "user" }: SubscribeModalProps) =
           <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center mx-auto mb-3">
             <Crown className="w-5 h-5 text-accent-foreground" />
           </div>
-          <h2 className="text-foreground font-bold text-lg">{title}</h2>
-          <p className="text-muted-foreground text-xs mt-1">{subtitle}</p>
+          <h2 className="text-foreground font-bold text-lg">
+            {mode === "agent" ? "Agent 1X Plan" : (userDoc?.subscription ? `Renew Subscription` : "Subscribe")}
+          </h2>
+          <p className="text-muted-foreground text-xs mt-1">
+            {mode === "agent" 
+              ? "Get your Agent ID and unlock earnings" 
+              : (userDoc?.subscription 
+                  ? `Current Plan: ${userDoc.subscription} (Exp: ${userDoc.subscriptionExpiry})` 
+                  : "Choose a plan and enjoy unlimited content")}
+          </p>
         </div>
 
         {step === "plan" && (
